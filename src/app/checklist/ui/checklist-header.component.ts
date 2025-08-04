@@ -24,6 +24,12 @@ import { Checklist } from '../../shared/interfaces/checklist';
         >
           Add item
         </button>
+        <button
+          (click)="deleteAllItems.emit(checklist().id)"
+          data-testid="delete-all-items-button"
+        >
+          Delete All items
+        </button>
       </div>
     </header>
   `,
@@ -40,4 +46,5 @@ export class ChecklistHeaderComponent {
   checklist = input.required<Checklist>();
   addItem = output();
   resetChecklist = output<string>();
+  deleteAllItems = output<string>();
 }
