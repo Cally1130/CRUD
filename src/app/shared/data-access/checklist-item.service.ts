@@ -33,7 +33,7 @@ export class ChecklistItemService {
   remove$ = new Subject<RemoveChecklistItem>();
   edit$ = new Subject<EditChecklistItem>();
   checklistRemoved$ = new Subject<RemoveChecklist>();
-  checklistRemoveAllItems$ = new Subject<RemoveChecklist>();
+  checklistRemoveAllItems$ = new Subject<void>();
 
   constructor() {
     this.add$.pipe(takeUntilDestroyed()).subscribe((checklistItem) =>
@@ -96,7 +96,7 @@ export class ChecklistItemService {
 
 
 
-    this.checklistRemoveAllItems$.pipe(takeUntilDestroyed()).subscribe((id) => {
+    this.checklistRemoveAllItems$.pipe(takeUntilDestroyed()).subscribe(() => {
       this.state.update((state)=> ({
         ...state,
         checklistItems: []

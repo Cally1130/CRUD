@@ -12,6 +12,7 @@ import { ChecklistListComponent } from './ui/checklist-list.component';
   <header>
     <h1>Quicklists</h1>
     <button (click)="checklistBeingEdited.set({})">Add Checklist</button>
+    <button (click)="checklistService.removeAll$.next()">Delete All Checklists</button>
 
     <h2>Your Checklist</h2>
     <app-checklist-list 

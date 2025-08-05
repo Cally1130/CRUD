@@ -8,6 +8,7 @@
       "request": "launch",
       "preLaunchTask": "npm: start",
       "url": "http://localhost:4200/"
+    // To use Safari, change the type to "pwa-webview" and specify the browser
     },
     {
       "name": "ng test",

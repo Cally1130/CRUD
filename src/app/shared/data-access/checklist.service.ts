@@ -28,6 +28,7 @@ export class ChecklistService {
   add$ = new Subject<AddChecklist>();
   remove$ = this.checklistItemService.checklistRemoved$;
   edit$ = new Subject<EditChecklist>();
+  removeAll$ = this.checklistItemService.checklistRemoveAllItems$;
 
   constructor() {
     // reducers
@@ -54,6 +55,13 @@ export class ChecklistService {
         ),
       }))
     );
+
+    this.removeAll$.pipe(takeUntilDestroyed()).subscribe(() =>{
+      this.state.update((state) => ({
+        ...state,
+        checklists: []
+      }));
+    });
   }
 
   private addIdToChecklist(checklist: AddChecklist) {
